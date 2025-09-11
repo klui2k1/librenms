@@ -685,7 +685,14 @@ class Rrd extends BaseDatastore
         }
 
         $result = str_replace(':', '\:', $result);          // escape colons
-
+        /**
+         * Need to pad spaces if any colons are found in $descr
+         *
+         * An if is needed because unconditionally using str_repeat makes it very slow
+         */
+        if ($extra > 0) {
+            $result = $result . str_repeat(' ', $extra);
+        }
         return $result . ' ';
     }
 

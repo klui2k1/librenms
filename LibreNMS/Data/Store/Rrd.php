@@ -670,6 +670,7 @@ class Rrd extends BaseDatastore
     {
         $result = Rewrite::shortenIfName($descr);
         $result = str_replace("'", '', $result);            // remove quotes
+        $extra = 0;
 
         if (is_numeric($length)) {
             // preserve original $length for str_pad()

@@ -2694,6 +2694,13 @@
             "default": "This is an aggregate graph of the incoming smokeping tests to this host. The line corresponds to the average RTT. The shaded area around each line denotes the standard deviation.",
             "type": "text"
         },
+        "graphs.bits_show_alias": {
+            "default": false,
+            "type": "boolean",
+            "group": "webui",
+            "section": "graph",
+            "order": 4
+        },
         "graph_types.device.agent": {
             "default": {
                 "section": "poller",

@@ -66,7 +66,7 @@ $i = 0;
 
 if ($width > '500') {
     $rrd_options .= sprintf(" COMMENT:'%s'", $units_descr);
-    $rrd_options .= sprintf(" COMMENT:'%12s'", 'Current');
+    $rrd_options .= sprintf(" COMMENT:'%11s'", 'Current');
     $rrd_options .= sprintf(" COMMENT:'%10s'", 'Average');
     $rrd_options .= sprintf(" COMMENT:'%10s'", 'Maximum');
     if (! $nototal) {
@@ -75,7 +75,7 @@ if ($width > '500') {
 } else {
     $nototal = true;
     $rrd_options .= sprintf(" COMMENT:'%s'", $units_descr);
-    $rrd_options .= sprintf(" COMMENT:'%12s'", 'Now');
+    $rrd_options .= sprintf(" COMMENT:'%11s'", 'Now');
     $rrd_options .= sprintf(" COMMENT:'%10s'", 'Avg');
     $rrd_options .= sprintf(" COMMENT:'%10s'", 'Max');
 }
@@ -153,7 +153,7 @@ foreach ($rrd_list ?? [] as $rrd) {
         if ($showAlias) {
             $descOutput = ($rrd['descr'] == $rrd['descr_out']) ? '' : '  ' . $rrd['descr_out'];
         }
-        $descr_out = LibreNMS\Data\Store\Rrd::fixedSafeDescr($descOutput, $rrddescr_len) . ' Out';
+        $descr_out = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($descOutput, $rrddescr_len) . ' Out';
     }
 
     $rrd_options .= ' AREA:inbits' . $i . '#' . $colour_in . $stacked['transparency'] . ":'$descr'$stack";

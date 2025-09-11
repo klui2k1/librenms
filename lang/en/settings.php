@@ -1030,6 +1030,10 @@ return [
                 'description' => 'Zoom port graphs to port speed',
                 'help' => 'Zoom port graphs so the max is always the port speed, disabled port graphs zoom to traffic',
             ],
+            'bits_show_alias' => [
+                'description' => 'Show port description',
+                'help' => 'Show port description in graphs where graph type is device bits in their Out rows, typically in Overview:Overall Traffic',
+            ],
         ],
         'graylog' => [
             'base_uri' => [

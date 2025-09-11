@@ -147,8 +147,13 @@ foreach ($rrd_list ?? [] as $rrd) {
     }
 
     if (! $nodetails) {
+        $showAlias = LibrenmsConfig::get('graphs.bits_show_alias');
         $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $rrddescr_len) . '  In';
-        $descr_out = \LibreNMS\Data\Store\Rrd::fixedSafeDescr('', $rrddescr_len) . ' Out';
+        $descOutput = '';
+        if ($showAlias) {
+            $descOutput = ($rrd['descr'] == $rrd['descr_out']) ? '' : '  ' . $rrd['descr_out'];
+        }
+        $descr_out = LibreNMS\Data\Store\Rrd::fixedSafeDescr($descOutput, $rrddescr_len) . ' Out';
     }
 
     $rrd_options .= ' AREA:inbits' . $i . '#' . $colour_in . $stacked['transparency'] . ":'$descr'$stack";
